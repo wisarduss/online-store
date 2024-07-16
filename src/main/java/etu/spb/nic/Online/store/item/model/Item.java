@@ -1,12 +1,14 @@
 package etu.spb.nic.Online.store.item.model;
 
-import etu.spb.nic.Online.store.item.model.status.ItemStatus;
+import etu.spb.nic.Online.store.category.model.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,4 +33,11 @@ public class Item {
     private String itemStatus;
     @Column(name = "total_count")
     private Long totalCount;
+    @ManyToMany
+    @JoinTable(
+            name = "item_categories",
+            joinColumns = {@JoinColumn(name = "item_id") },
+            inverseJoinColumns = {@JoinColumn(name = "cat_id") }
+    )
+    private Set<Category> categories = new HashSet<>();
 }

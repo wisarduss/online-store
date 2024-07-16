@@ -18,11 +18,20 @@ CREATE TABLE IF NOT EXISTS items
     total_count     INTEGER NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS fk_categories_to_items
+CREATE TABLE IF NOT EXISTS categories
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    title       VARCHAR NOT NULL,
-    item_id     INTEGER NOT NULL,
-    CONSTRAINT fk_categories_to_items FOREIGN KEY (item_id) REFERENCES items (id),
-    UNIQUE(id)
+    title       VARCHAR NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS item_categories
+(
+   item_id  INTEGER NOT NULL,
+   cat_id   INTEGER NOT NULL,
+   PRIMARY KEY (item_id, cat_id),
+   FOREIGN KEY (item_id) REFERENCES items(id),
+   FOREIGN KEY (cat_id) REFERENCES categories(id)
+
+);
+
+
