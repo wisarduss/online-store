@@ -8,8 +8,8 @@
 		<version>2.5.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>etu.spb.nic</groupId>
-	<artifactId>Online-store</artifactId>
+	<groupId>etu.spb.nic.online</groupId>
+	<artifactId>store</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Online-store</name>
 	<description>Project for nic online store</description>
