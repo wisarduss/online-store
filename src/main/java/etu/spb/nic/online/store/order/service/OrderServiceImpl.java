@@ -1,7 +1,7 @@
 package etu.spb.nic.online.store.order.service;
 
-import etu.spb.nic.online.store.exception.IdNotFoundException;
-import etu.spb.nic.online.store.exception.LassThenZeroException;
+import etu.spb.nic.online.store.common.exception.IdNotFoundException;
+import etu.spb.nic.online.store.common.exception.LassThenZeroException;
 import etu.spb.nic.online.store.item.ItemRepository;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.order.dto.OrderDto;
@@ -34,18 +34,23 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto addToCart(OrderDto orderDto) {
-        List<Item> items = new ArrayList<>();
-        Item item = itemRepository.findById(orderDto.getItemIds().get(0))
-                .orElseThrow(() -> new RuntimeException("Item not found"));
-        if (item.getTotalCount() <= 0) {
-            throw new RuntimeException("Item is out of stock");
-        }
-
         User user = userRepository.findById(orderDto.getUserId())
-                .orElseThrow(() -> new IdNotFoundException("Пользователь с id = "
-                        + orderDto.getUserId() + " не найден"));
+                .orElseThrow(() -> new IdNotFoundException("Пользователя с id = "
+                        + orderDto.getUserId() + " не существует"));
 
-        items.add(item);
+        List<Item> items = new ArrayList<>();
+
+        for (Long itemId : orderDto.getItemIds()) {
+            Item item = itemRepository.findById(itemId)
+                    .orElseThrow(() -> new IdNotFoundException("Вещи с id = " + itemId + " не существует"));
+
+            if (item.getTotalCount() > 0) {
+                item.setTotalCount(item.getTotalCount() - 1);
+                items.add(item);
+            } else {
+                throw new LassThenZeroException("Товар закончился!");
+            }
+        }
 
         Order order = Order.builder()
                 .id(orderDto.getId())
@@ -53,9 +58,18 @@ public class OrderServiceImpl implements OrderService {
                 .items(items)
                 .build();
 
-        item.setTotalCount(item.getTotalCount() - 1);
-        itemRepository.save(item);
+        orderRepository.save(order);
+        itemRepository.saveAll(items);
 
-        return OrderMapper.orderToOrderDto(orderRepository.save(order));
+        return OrderMapper.orderToOrderDto(order);
     }
+
+    @Override
+    public List<OrderDto> getUserOrders(Long userId) {
+        return orderRepository.findByUserId(userId).stream()
+                .map(OrderMapper::orderToOrderDto)
+                .collect(Collectors.toList());
+    }
+
+
 }

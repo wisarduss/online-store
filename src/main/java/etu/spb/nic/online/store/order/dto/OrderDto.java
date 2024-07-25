@@ -1,13 +1,16 @@
 package etu.spb.nic.online.store.order.dto;
 
-import etu.spb.nic.online.store.item.model.Item;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder(toBuilder = true)
 public class OrderDto {
 

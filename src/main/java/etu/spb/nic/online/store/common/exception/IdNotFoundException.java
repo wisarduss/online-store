@@ -1,4 +1,4 @@
-package etu.spb.nic.online.store.exception;
+package etu.spb.nic.online.store.common.exception;
 
 public class IdNotFoundException extends RuntimeException {
     public IdNotFoundException() {

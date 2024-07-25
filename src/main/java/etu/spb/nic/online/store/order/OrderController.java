@@ -3,10 +3,7 @@ package etu.spb.nic.online.store.order;
 import etu.spb.nic.online.store.order.dto.OrderDto;
 import etu.spb.nic.online.store.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,13 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderDto addToCart(OrderDto orderDto) {
+    public OrderDto addToCart(@RequestBody OrderDto orderDto) {
         return orderService.addToCart(orderDto);
     }
+
+    @GetMapping("/{userId}")
+    public List<OrderDto> getUserOrders(@PathVariable Long userId) {
+        return orderService.getUserOrders(userId);
+    }
+
 }

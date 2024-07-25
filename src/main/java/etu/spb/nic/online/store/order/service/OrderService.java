@@ -9,4 +9,7 @@ public interface OrderService {
     List<OrderDto> getAll();
 
     OrderDto addToCart(OrderDto orderDto);
+
+    List<OrderDto> getUserOrders(Long userId);
+
 }

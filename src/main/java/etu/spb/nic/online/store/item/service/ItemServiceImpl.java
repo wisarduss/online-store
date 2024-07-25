@@ -1,6 +1,6 @@
 package etu.spb.nic.online.store.item.service;
 
-import etu.spb.nic.online.store.exception.LassThenZeroException;
+import etu.spb.nic.online.store.common.exception.LassThenZeroException;
 import etu.spb.nic.online.store.item.ItemRepository;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 import etu.spb.nic.online.store.item.mapper.ItemMapper;
@@ -210,20 +210,16 @@ public class ItemServiceImpl implements ItemService {
 
     private List<Item> checkStatus(List<Item> items) {
         for (Item item : items) {
-
             if (item.getTotalCount() > 5) {
                 item.setItemStatus(ItemStatus.IN_STOCK.getText());
-            }
-            else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
+            } else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
                 item.setItemStatus(ItemStatus.A_LITTLE.getText());
-            }
-            else if (item.getTotalCount() == 0) {
+            } else if (item.getTotalCount() == 0) {
                 item.setItemStatus(ItemStatus.OUT_OF_STOCK.getText());
-            }
-            else {
+            } else {
                 throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
             }
-
+            itemRepository.save(item);
         }
         return items;
     }
