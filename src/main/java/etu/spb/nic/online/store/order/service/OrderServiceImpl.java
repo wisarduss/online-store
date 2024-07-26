@@ -2,8 +2,10 @@ package etu.spb.nic.online.store.order.service;
 
 import etu.spb.nic.online.store.common.exception.IdNotFoundException;
 import etu.spb.nic.online.store.common.exception.LassThenZeroException;
+import etu.spb.nic.online.store.common.exception.NotOwnerException;
 import etu.spb.nic.online.store.item.ItemRepository;
 import etu.spb.nic.online.store.item.model.Item;
+import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.order.dto.OrderDto;
 import etu.spb.nic.online.store.order.mapper.OrderMapper;
 import etu.spb.nic.online.store.order.model.Order;
@@ -44,7 +46,9 @@ public class OrderServiceImpl implements OrderService {
             Item item = itemRepository.findById(itemId)
                     .orElseThrow(() -> new IdNotFoundException("Вещи с id = " + itemId + " не существует"));
 
-            if (item.getTotalCount() > 0) {
+            checkStatus(item);
+
+            if (!item.getItemStatus().equals("Нет в наличии")) {
                 item.setTotalCount(item.getTotalCount() - 1);
                 items.add(item);
             } else {
@@ -69,6 +73,50 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findByUserId(userId).stream()
                 .map(OrderMapper::orderToOrderDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteUserOrder(Long userId, Long orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new IdNotFoundException("Заказа с id = " + orderId + " не существует"));
+
+        userRepository.findById(userId)
+                .orElseThrow(() -> new IdNotFoundException("Пользователь с id = " + userId + " не найден"));
+
+        if (!order.getUser().getId().equals(userId)) {
+            throw new NotOwnerException("Только владелец заказа может его удалить");
+        }
+
+        OrderDto orderDto = OrderMapper.orderToOrderDto(order);
+
+        for (Long itemId : orderDto.getItemIds()) {
+            Item item = itemRepository.findById(itemId)
+                    .orElseThrow(() -> new IdNotFoundException("Вещи с id = " + itemId + " не существует"));
+
+            checkStatus(item);
+            item.setTotalCount(item.getTotalCount() + 1);
+            itemRepository.save(item); // Сохраняем изменения в базе данных
+        }
+
+        // Удаляем заказ
+        orderRepository.delete(order);
+    }
+
+
+
+
+    private Item checkStatus(Item item) {
+            if (item.getTotalCount() > 5) {
+                item.setItemStatus(ItemStatus.IN_STOCK.getText());
+            } else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
+                item.setItemStatus(ItemStatus.A_LITTLE.getText());
+            } else if (item.getTotalCount() == 0) {
+                item.setItemStatus(ItemStatus.OUT_OF_STOCK.getText());
+            } else {
+                throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
+            }
+
+        return itemRepository.save(item);
     }
 
 

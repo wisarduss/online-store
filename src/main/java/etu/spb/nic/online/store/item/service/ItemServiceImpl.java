@@ -219,8 +219,7 @@ public class ItemServiceImpl implements ItemService {
             } else {
                 throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
             }
-            itemRepository.save(item);
         }
-        return items;
+        return itemRepository.saveAll(items);
     }
 }

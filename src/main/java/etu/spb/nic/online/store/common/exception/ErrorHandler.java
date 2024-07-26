@@ -33,15 +33,21 @@ public class ErrorHandler {
     @ExceptionHandler(AlreadyExistException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleObjectDoesNotExistException(final AlreadyExistException e) {
-        log.debug("Получен статус 500 internal server error found {}", e.getMessage());
+        log.debug("Получен статус 500 internal server error  {}", e.getMessage());
         return new ErrorResponse(e.getMessage());
     }
 
     @ExceptionHandler(LassThenZeroException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleObjectDoesNotExistException(final LassThenZeroException e) {
-        log.debug("Получен статус 500 internal server error found {}", e.getMessage());
+        log.debug("Получен статус 500 internal server error  {}", e.getMessage());
         return new ErrorResponse(e.getMessage());
     }
 
+    @ExceptionHandler(NotOwnerException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleObjectDoesNotExistException(final NotOwnerException e) {
+        log.debug("Получен статус 400 bad request {}", e.getMessage());
+        return new ErrorResponse(e.getMessage());
+    }
 }

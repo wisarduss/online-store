@@ -29,4 +29,9 @@ public class OrderController {
         return orderService.getUserOrders(userId);
     }
 
+    @DeleteMapping("/{userId}/{orderId}")
+    public void deleteUserOrder(@PathVariable Long userId, @PathVariable Long orderId) {
+        orderService.deleteUserOrder(userId, orderId);
+    }
+
 }

@@ -30,7 +30,6 @@ public class Item {
     private String photoURL;
     @Column(name = "price")
     private Long price;
-    @Transient
     private String itemStatus;
     @Column(name = "total_count")
     private Long totalCount;
