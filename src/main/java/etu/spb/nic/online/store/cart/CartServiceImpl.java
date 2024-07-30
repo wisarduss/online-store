@@ -1,75 +1,109 @@
 package etu.spb.nic.online.store.cart;
 
 import etu.spb.nic.online.store.common.exception.IdNotFoundException;
-import etu.spb.nic.online.store.common.exception.LassThenZeroException;
 import etu.spb.nic.online.store.item.ItemRepository;
-import etu.spb.nic.online.store.item.dto.ItemDto;
-import etu.spb.nic.online.store.item.mapper.ItemMapper;
 import etu.spb.nic.online.store.item.model.Item;
-import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.user.model.User;
 import etu.spb.nic.online.store.user.repository.UserRepository;
 import etu.spb.nic.online.store.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
 
-    private final UserService userService;
+    private final CartRepository cartRepository;
     private final ItemRepository itemRepository;
     private final UserRepository userRepository;
-
-
-    @Override
-    public List<Item> getItemsInCart() {
-        User user = userService.getAuthenticatedUser();
-        return user.getItems();
-    }
+    private final UserService userService;
 
     @Override
-    public void addItemsToCart(Long itemId) {
+    public CartDto getCartForUser() {
         User user = userService.getAuthenticatedUser();
-        Item item = itemRepository.findById(itemId)
-                .orElseThrow(() -> new IdNotFoundException("Товар с id = " + itemId + " не найден"));
 
-        checkStatus(item);
+        Cart cart = cartRepository.findByUser(user);
 
-        if (!item.getItemStatus().equals("Нет в наличии")) {
-            item.setTotalCount(item.getTotalCount() - 1);
-            itemRepository.save(item);
-            user.getItems().add(item);
-            System.out.println(user.getItems().get(0));
-        } else {
-            throw new LassThenZeroException("Товар закончился!");
-        }
-    }
 
-    @Override
-    public void removeItemsFromCart(Long itemId) {
-        User user = userService.getAuthenticatedUser();
-        Item item = itemRepository.findById(itemId)
-                .orElseThrow(() -> new IdNotFoundException("Товар с id = " + itemId + " не найден"));
-
-        user.getItems().remove(item);
-        item.setTotalCount(item.getTotalCount() + 1);
-    }
-
-    private Item checkStatus(Item item) {
-        if (item.getTotalCount() > 5) {
-            item.setItemStatus(ItemStatus.IN_STOCK.getText());
-        } else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
-            item.setItemStatus(ItemStatus.A_LITTLE.getText());
-        } else if (item.getTotalCount() == 0) {
-            item.setItemStatus(ItemStatus.OUT_OF_STOCK.getText());
-        } else {
-            throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
+        if (cart == null) {
+            cart = new Cart();
+            cart.setUser(user);
+            cart = cartRepository.save(cart);
         }
 
-        return itemRepository.save(item);
+        Set<Long> itemIds = new HashSet<>();
+        for (Item item : cart.getItems()) {
+            itemIds.add(item.getId());
+        }
+
+        return CartDto.builder()
+                .id(cart.getId())
+                .userId(user.getId())
+                .itemIds(itemIds)
+                .build();
     }
+
+    @Override
+    public void addItemToCart(Long itemId) {
+        User user = userService.getAuthenticatedUser();
+        CartDto cartDto = getCartForUser();
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new IdNotFoundException("Товар не найден"));
+        Set<Item> items = new HashSet<>();
+
+        for (Long id : cartDto.getItemIds()) {
+            Item checkItem = itemRepository.getById(id);
+            items.add(checkItem);
+        }
+        Cart cart = CartMapper.cartDtoToCart(cartDto, user, items);
+
+        cart.addItem(item);
+        cartRepository.save(cart);
+    }
+
+    @Override
+    public void removeItemFromCart(Long itemId) {
+        User user = userService.getAuthenticatedUser();
+        CartDto cartDto = getCartForUser();
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new IdNotFoundException("Товар не найден"));
+        Set<Item> items = new HashSet<>();
+
+        for (Long id : cartDto.getItemIds()) {
+            Item checkItem = itemRepository.getById(id);
+            items.add(checkItem);
+        }
+
+        Cart cart = CartMapper.cartDtoToCart(cartDto, user, items);
+
+        if (!items.contains(item)) {
+            throw new IdNotFoundException("Товар, который вы хотите удалить не находится у вас в корзине!");
+        }
+
+        cart.removeItem(item);
+        cartRepository.save(cart);
+    }
+
+    @Override
+    public void clearCart() {
+        User user = userService.getAuthenticatedUser();
+        CartDto cartDto = getCartForUser();
+
+        Set<Item> items = new HashSet<>();
+
+        for (Long id : cartDto.getItemIds()) {
+            Item checkItem = itemRepository.getById(id);
+            items.add(checkItem);
+        }
+
+        Cart cart = CartMapper.cartDtoToCart(cartDto, user, items);
+
+        cart.getItems().clear();
+        cartRepository.save(cart);
+
+    }
+
 }

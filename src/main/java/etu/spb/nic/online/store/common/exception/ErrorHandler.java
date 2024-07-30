@@ -50,4 +50,11 @@ public class ErrorHandler {
         log.debug("Получен статус 400 bad request {}", e.getMessage());
         return new ErrorResponse(e.getMessage());
     }
+
+    @ExceptionHandler(EmptyCartException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleObjectDoesNotExistException(final EmptyCartException e) {
+        log.debug("Получен статус 500 internal server error  {}", e.getMessage());
+        return new ErrorResponse(e.getMessage());
+    }
 }

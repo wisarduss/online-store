@@ -1,11 +1,7 @@
 package etu.spb.nic.online.store.cart;
 
-import etu.spb.nic.online.store.item.dto.ItemDto;
-import etu.spb.nic.online.store.item.model.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,17 +11,22 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping
-    public List<Item> getCart() {
-        return cartService.getItemsInCart();
+    public CartDto getCart() {
+        return cartService.getCartForUser();
     }
 
-    @PostMapping("/add/{itemId}")
-    public void addPerfumeToCart(@PathVariable Long itemId) {
-        cartService.addItemsToCart(itemId);
+    @PostMapping("/{itemId}")
+    public void addItem(@PathVariable Long itemId) {
+        cartService.addItemToCart(itemId);
     }
 
-    @PostMapping("/remove/{itemId}")
-    public void removePerfumeFromCart(@PathVariable Long itemId) {
-        cartService.removeItemsFromCart(itemId);
+    @DeleteMapping("/{itemId}")
+    public void removeItem(@PathVariable Long itemId) {
+        cartService.removeItemFromCart(itemId);
+    }
+
+    @DeleteMapping("/clear")
+    public void clearCart() {
+        cartService.clearCart();
     }
 }

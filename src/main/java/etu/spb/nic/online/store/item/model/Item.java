@@ -1,7 +1,6 @@
 package etu.spb.nic.online.store.item.model;
 
 import etu.spb.nic.online.store.category.model.Category;
-import etu.spb.nic.online.store.order.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,8 +35,8 @@ public class Item {
     @ManyToMany
     @JoinTable(
             name = "item_categories",
-            joinColumns = {@JoinColumn(name = "item_id") },
-            inverseJoinColumns = {@JoinColumn(name = "cat_id") }
+            joinColumns = {@JoinColumn(name = "item_id")},
+            inverseJoinColumns = {@JoinColumn(name = "cat_id")}
     )
     private Set<Category> categories = new HashSet<>();
 }

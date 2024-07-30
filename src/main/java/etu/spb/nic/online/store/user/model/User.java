@@ -1,10 +1,8 @@
 package etu.spb.nic.online.store.user.model;
 
-import etu.spb.nic.online.store.item.model.Item;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +24,4 @@ public class User {
     private String email;
     @Column(name = "password")
     private String password;
-    @OneToMany
-    private List<Item> items;
 }

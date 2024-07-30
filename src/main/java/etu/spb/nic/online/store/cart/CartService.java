@@ -1,15 +1,12 @@
 package etu.spb.nic.online.store.cart;
 
-import etu.spb.nic.online.store.item.dto.ItemDto;
-import etu.spb.nic.online.store.item.model.Item;
-
-import java.util.List;
-
 public interface CartService {
 
-    List<Item> getItemsInCart();
+    CartDto getCartForUser();
 
-    void addItemsToCart(Long itemId);
+    void addItemToCart(Long itemId);
 
-    void removeItemsFromCart(Long itemId);
+    void removeItemFromCart(Long itemId);
+
+    void clearCart();
 }
