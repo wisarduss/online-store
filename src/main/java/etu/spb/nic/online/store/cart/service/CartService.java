@@ -1,4 +1,6 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.service;
+
+import etu.spb.nic.online.store.cart.dto.CartDto;
 
 public interface CartService {
 

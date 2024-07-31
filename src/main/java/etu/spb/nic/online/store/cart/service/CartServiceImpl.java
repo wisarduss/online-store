@@ -1,8 +1,16 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.service;
 
+import etu.spb.nic.online.store.cart.model.Cart;
+import etu.spb.nic.online.store.cart.dto.CartDto;
+import etu.spb.nic.online.store.cart.mapper.CartMapper;
+import etu.spb.nic.online.store.cart.repository.CartRepository;
+import etu.spb.nic.online.store.common.exception.EmptyCartException;
+import etu.spb.nic.online.store.common.exception.EmptyItemException;
 import etu.spb.nic.online.store.common.exception.IdNotFoundException;
+import etu.spb.nic.online.store.common.exception.LassThenZeroException;
 import etu.spb.nic.online.store.item.ItemRepository;
 import etu.spb.nic.online.store.item.model.Item;
+import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.user.model.User;
 import etu.spb.nic.online.store.user.repository.UserRepository;
 import etu.spb.nic.online.store.user.service.UserService;
@@ -60,7 +68,14 @@ public class CartServiceImpl implements CartService {
         }
         Cart cart = CartMapper.cartDtoToCart(cartDto, user, items);
 
+        checkStatus(item);
+        if (item.getItemStatus().equals("Нет в наличии")) {
+            throw new EmptyItemException("Извините товар закончился, его нельзя добавить в корзину");
+        }
+
         cart.addItem(item);
+        item.setTotalCount(item.getTotalCount() - 1);
+        itemRepository.save(item);
         cartRepository.save(cart);
     }
 
@@ -83,6 +98,7 @@ public class CartServiceImpl implements CartService {
             throw new IdNotFoundException("Товар, который вы хотите удалить не находится у вас в корзине!");
         }
 
+        item.setTotalCount(item.getTotalCount() + 1);
         cart.removeItem(item);
         cartRepository.save(cart);
     }
@@ -91,6 +107,10 @@ public class CartServiceImpl implements CartService {
     public void clearCart() {
         User user = userService.getAuthenticatedUser();
         CartDto cartDto = getCartForUser();
+
+        if (cartDto.getItemIds().isEmpty()) {
+            throw new EmptyCartException("Ваша корзина пуста, Вам нечего удалять");
+        }
 
         Set<Item> items = new HashSet<>();
 
@@ -101,9 +121,27 @@ public class CartServiceImpl implements CartService {
 
         Cart cart = CartMapper.cartDtoToCart(cartDto, user, items);
 
+        for (Item item : cart.getItems()) {
+            item.setTotalCount(item.getTotalCount() + 1);
+            itemRepository.save(item);
+        }
+
         cart.getItems().clear();
         cartRepository.save(cart);
 
+    }
+
+    private void checkStatus(Item item) {
+            if (item.getTotalCount() > 5) {
+                item.setItemStatus(ItemStatus.IN_STOCK.getText());
+            } else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
+                item.setItemStatus(ItemStatus.A_LITTLE.getText());
+            } else if (item.getTotalCount() == 0) {
+                item.setItemStatus(ItemStatus.OUT_OF_STOCK.getText());
+            } else {
+                throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
+            }
+            itemRepository.save(item);
     }
 
 }

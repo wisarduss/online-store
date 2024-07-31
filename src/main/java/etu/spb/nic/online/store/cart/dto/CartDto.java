@@ -1,4 +1,4 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.dto;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.model;
 
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.user.model.User;

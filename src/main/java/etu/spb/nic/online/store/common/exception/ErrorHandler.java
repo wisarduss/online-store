@@ -57,4 +57,11 @@ public class ErrorHandler {
         log.debug("Получен статус 500 internal server error  {}", e.getMessage());
         return new ErrorResponse(e.getMessage());
     }
+
+    @ExceptionHandler(EmptyItemException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleObjectDoesNotExistException(final EmptyItemException e) {
+        log.debug("Получен статус 500 internal server error  {}", e.getMessage());
+        return new ErrorResponse(e.getMessage());
+    }
 }

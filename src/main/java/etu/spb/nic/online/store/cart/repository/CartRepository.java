@@ -1,5 +1,6 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.repository;
 
+import etu.spb.nic.online.store.cart.model.Cart;
 import etu.spb.nic.online.store.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

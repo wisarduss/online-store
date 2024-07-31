@@ -66,6 +66,8 @@ public class ItemServiceImpl implements ItemService {
                 .collect(Collectors.toList());
     }
 
+
+
     @Override
     public List<ItemDto> getAllAppleWatches() {
         List<Item> items = itemRepository.findByCatIdAppleWatch();

@@ -3,6 +3,7 @@ package etu.spb.nic.online.store.item.service;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ItemService {
 

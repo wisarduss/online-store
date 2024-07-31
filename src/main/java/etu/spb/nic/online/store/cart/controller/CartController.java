@@ -1,5 +1,7 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.controller;
 
+import etu.spb.nic.online.store.cart.dto.CartDto;
+import etu.spb.nic.online.store.cart.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

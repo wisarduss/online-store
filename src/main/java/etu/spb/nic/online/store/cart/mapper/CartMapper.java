@@ -1,5 +1,7 @@
-package etu.spb.nic.online.store.cart;
+package etu.spb.nic.online.store.cart.mapper;
 
+import etu.spb.nic.online.store.cart.dto.CartDto;
+import etu.spb.nic.online.store.cart.model.Cart;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.user.model.User;
 import lombok.experimental.UtilityClass;
