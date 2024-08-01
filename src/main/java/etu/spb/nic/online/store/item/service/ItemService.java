@@ -1,5 +1,6 @@
 package etu.spb.nic.online.store.item.service;
 
+import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface ItemService {
 
     List<ItemDto> getPhones();
 
-    List<ItemDto> getAll();
+    Map<CategoryDto, List<ItemDto>> getAll();
 
     List<ItemDto> getAllAppleWatches();
 

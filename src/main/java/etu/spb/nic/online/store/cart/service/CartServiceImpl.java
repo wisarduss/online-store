@@ -8,7 +8,7 @@ import etu.spb.nic.online.store.common.exception.EmptyCartException;
 import etu.spb.nic.online.store.common.exception.EmptyItemException;
 import etu.spb.nic.online.store.common.exception.IdNotFoundException;
 import etu.spb.nic.online.store.common.exception.LassThenZeroException;
-import etu.spb.nic.online.store.item.ItemRepository;
+import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.user.model.User;

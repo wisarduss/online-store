@@ -1,5 +1,6 @@
 package etu.spb.nic.online.store.category.controller;
 
+import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 import etu.spb.nic.online.store.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,7 +34,7 @@ public class CategoryController {
     }
 
     @GetMapping()
-    public List<ItemDto> getAll() {
+    public Map<CategoryDto, List<ItemDto>> getAll() {
         return itemService.getAll();
     }
 

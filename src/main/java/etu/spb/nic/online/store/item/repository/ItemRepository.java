@@ -1,4 +1,4 @@
-package etu.spb.nic.online.store.item;
+package etu.spb.nic.online.store.item.repository;
 
 import etu.spb.nic.online.store.item.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;

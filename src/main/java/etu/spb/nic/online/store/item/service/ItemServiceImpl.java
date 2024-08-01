@@ -1,7 +1,10 @@
 package etu.spb.nic.online.store.item.service;
 
+import etu.spb.nic.online.store.category.dto.CategoryDto;
+import etu.spb.nic.online.store.category.model.Category;
+import etu.spb.nic.online.store.category.repository.CategoryRepository;
 import etu.spb.nic.online.store.common.exception.LassThenZeroException;
-import etu.spb.nic.online.store.item.ItemRepository;
+import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 import etu.spb.nic.online.store.item.mapper.ItemMapper;
 import etu.spb.nic.online.store.item.model.Item;
@@ -9,7 +12,11 @@ import etu.spb.nic.online.store.item.model.ItemStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,6 +24,7 @@ import java.util.stream.Collectors;
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
+    private final CategoryRepository categoryRepository;
 
 
     @Override
@@ -56,14 +64,33 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDto> getAll() {
+    public Map<CategoryDto, List<ItemDto>> getAll() {
         List<Item> items = itemRepository.findAll();
-
         List<Item> updatedItems = checkStatus(items);
 
-        return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
-                .collect(Collectors.toList());
+        Map<Long, List<ItemDto>> itemsByCategoryId = updatedItems.stream()
+                .flatMap(item -> item.getCategories().stream()
+                        .map(category -> new AbstractMap.SimpleEntry<>(category.getId(), ItemMapper.itemToItemDto(item))))
+                .collect(Collectors.groupingBy(Map.Entry::getKey,
+                        Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
+
+        Map<CategoryDto, List<ItemDto>> result = new HashMap<>();
+        for (Map.Entry<Long, List<ItemDto>> entry : itemsByCategoryId.entrySet()) {
+            Long categoryId = entry.getKey();
+            List<ItemDto> itemDtos = entry.getValue();
+
+            String categoryTitle = getCategoryTitleById(categoryId);
+
+            CategoryDto categoryDto = CategoryDto.builder()
+                    .id(categoryId)
+                    .title(categoryTitle)
+                    .build();
+
+            // Добавляем в результат
+            result.put(categoryDto, itemDtos);
+        }
+
+        return result;
     }
 
 
@@ -223,5 +250,13 @@ public class ItemServiceImpl implements ItemService {
             }
         }
         return itemRepository.saveAll(items);
+    }
+
+    private String getCategoryTitleById(Long categoryId) {
+        // Находим категорию по ID
+        Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
+
+        // Если категория найдена, возвращаем её заголовок, иначе возвращаем null или пустую строку
+        return categoryOptional.map(Category::getTitle).orElse(null);
     }
 }
