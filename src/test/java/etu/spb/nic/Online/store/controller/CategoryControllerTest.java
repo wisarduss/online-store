@@ -10,7 +10,6 @@ import etu.spb.nic.online.store.item.mapper.ItemMapper;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.item.service.ItemService;
-import lombok.With;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -288,9 +286,9 @@ public class CategoryControllerTest {
 
         Map<CategoryDto, List<ItemDto>> itemsMap = new HashMap<>();
 
-        itemsMap.put(categoryDtoIphone,itemsIphone);
-        itemsMap.put(categoryDtoSamsung,itemsSamsung);
-        itemsMap.put(categoryDtoPhones,itemsPhones);
+        itemsMap.put(categoryDtoIphone, itemsIphone);
+        itemsMap.put(categoryDtoSamsung, itemsSamsung);
+        itemsMap.put(categoryDtoPhones, itemsPhones);
 
         when(itemService.getAll())
                 .thenReturn(itemsMap);
@@ -847,13 +845,5 @@ public class CategoryControllerTest {
         assertEquals(itemService.getSamsungCase().size(), 1);
 
     }
-
-
-
-
-
-
-
-
 
 }
