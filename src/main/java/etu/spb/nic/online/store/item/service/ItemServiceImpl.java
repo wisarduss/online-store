@@ -3,20 +3,24 @@ package etu.spb.nic.online.store.item.service;
 import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.category.model.Category;
 import etu.spb.nic.online.store.category.repository.CategoryRepository;
+import etu.spb.nic.online.store.common.exception.IdNotFoundException;
 import etu.spb.nic.online.store.common.exception.LassThenZeroException;
-import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.item.dto.ItemDto;
+import etu.spb.nic.online.store.item.dto.ItemResponseDto;
 import etu.spb.nic.online.store.item.mapper.ItemMapper;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.item.model.ItemStatus;
+import etu.spb.nic.online.store.item.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.AbstractMap;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,30 +32,44 @@ public class ItemServiceImpl implements ItemService {
 
 
     @Override
-    public List<ItemDto> getIphones() {
+    public void addItem(ItemDto itemDto) {
+        Set<Category> categories = new HashSet<>();
+
+        for (Long catId : itemDto.getCatIds()) {
+            Category category = categoryRepository.findById(catId)
+                    .orElseThrow(() -> new IdNotFoundException(String.format("категория с id = %d не найдена", catId)));
+            categories.add(category);
+        }
+
+        Item item = ItemMapper.itemDtoToItemWithIds(itemDto, categories);
+        itemRepository.save(item);
+    }
+
+    @Override
+    public List<ItemResponseDto> getIphones() {
         List<Item> items = itemRepository.findByCatIdIphone();
 
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getSamsung() {
+    public List<ItemResponseDto> getSamsung() {
         List<Item> items = itemRepository.findByCatIdSamsung();
 
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
 
     }
 
     @Override
-    public List<ItemDto> getPhones() {
+    public List<ItemResponseDto> getPhones() {
 
         List<Item> items = itemRepository.findByCatIdPhones();
 
@@ -59,25 +77,25 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Map<CategoryDto, List<ItemDto>> getAll() {
+    public Map<CategoryDto, List<ItemResponseDto>> getAll() {
         List<Item> items = itemRepository.findAll();
         List<Item> updatedItems = checkStatus(items);
 
-        Map<Long, List<ItemDto>> itemsByCategoryId = updatedItems.stream()
+        Map<Long, List<ItemResponseDto>> itemsByCategoryId = updatedItems.stream()
                 .flatMap(item -> item.getCategories().stream()
-                        .map(category -> new AbstractMap.SimpleEntry<>(category.getId(), ItemMapper.itemToItemDto(item))))
+                        .map(category -> new AbstractMap.SimpleEntry<>(category.getId(), ItemMapper.itemToItemResponseDto(item))))
                 .collect(Collectors.groupingBy(Map.Entry::getKey,
                         Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
 
-        Map<CategoryDto, List<ItemDto>> result = new HashMap<>();
-        for (Map.Entry<Long, List<ItemDto>> entry : itemsByCategoryId.entrySet()) {
+        Map<CategoryDto, List<ItemResponseDto>> result = new HashMap<>();
+        for (Map.Entry<Long, List<ItemResponseDto>> entry : itemsByCategoryId.entrySet()) {
             Long categoryId = entry.getKey();
-            List<ItemDto> itemDtos = entry.getValue();
+            List<ItemResponseDto> itemDtos = entry.getValue();
 
             String categoryTitle = getCategoryTitleById(categoryId);
 
@@ -94,21 +112,20 @@ public class ItemServiceImpl implements ItemService {
     }
 
 
-
     @Override
-    public List<ItemDto> getAllAppleWatches() {
+    public List<ItemResponseDto> getAllAppleWatches() {
         List<Item> items = itemRepository.findByCatIdAppleWatch();
 
 
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getWatches() {
+    public List<ItemResponseDto> getWatches() {
 
         List<Item> items = itemRepository.findByCatIdWatch();
 
@@ -116,12 +133,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getXiaomiWatches() {
+    public List<ItemResponseDto> getXiaomiWatches() {
 
         List<Item> items = itemRepository.findByCatIdXiaomiWatch();
 
@@ -129,12 +146,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getAllAudio() {
+    public List<ItemResponseDto> getAllAudio() {
 
         List<Item> items = itemRepository.findByCatIdAudio();
 
@@ -142,12 +159,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getAppleAirpods() {
+    public List<ItemResponseDto> getAppleAirpods() {
 
         List<Item> items = itemRepository.findByCatIdAppleAirpods();
 
@@ -155,12 +172,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getSmartSpeakers() {
+    public List<ItemResponseDto> getSmartSpeakers() {
 
         List<Item> items = itemRepository.findByCatIdSmartSpeakers();
 
@@ -168,12 +185,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getHeadphones() {
+    public List<ItemResponseDto> getHeadphones() {
 
         List<Item> items = itemRepository.findByCatIdHeadphones();
 
@@ -181,12 +198,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getSamsungHeadphones() {
+    public List<ItemResponseDto> getSamsungHeadphones() {
 
         List<Item> items = itemRepository.findByCatIdSamsungHeadphones();
 
@@ -194,12 +211,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getAppleCase() {
+    public List<ItemResponseDto> getAppleCase() {
 
         List<Item> items = itemRepository.findByCatIdAppleCase();
 
@@ -207,12 +224,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getAccessories() {
+    public List<ItemResponseDto> getAccessories() {
 
         List<Item> items = itemRepository.findByCatIdAccessories();
 
@@ -220,12 +237,12 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ItemDto> getSamsungCase() {
+    public List<ItemResponseDto> getSamsungCase() {
 
         List<Item> items = itemRepository.findByCatIdSamsungCase();
 
@@ -233,7 +250,7 @@ public class ItemServiceImpl implements ItemService {
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
-                .map(ItemMapper::itemToItemDto)
+                .map(ItemMapper::itemToItemResponseDto)
                 .collect(Collectors.toList());
     }
 

@@ -2,41 +2,43 @@ package etu.spb.nic.online.store.item.service;
 
 import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.item.dto.ItemDto;
+import etu.spb.nic.online.store.item.dto.ItemResponseDto;
 
 import java.util.List;
 import java.util.Map;
 
 public interface ItemService {
 
-    List<ItemDto> getIphones();
+    List<ItemResponseDto> getIphones();
 
-    List<ItemDto> getSamsung();
+    List<ItemResponseDto> getSamsung();
 
+    void addItem(ItemDto itemDto);
 
-    List<ItemDto> getPhones();
+    List<ItemResponseDto> getPhones();
 
-    Map<CategoryDto, List<ItemDto>> getAll();
+    Map<CategoryDto, List<ItemResponseDto>> getAll();
 
-    List<ItemDto> getAllAppleWatches();
+    List<ItemResponseDto> getAllAppleWatches();
 
-    List<ItemDto> getWatches();
+    List<ItemResponseDto> getWatches();
 
-    List<ItemDto> getXiaomiWatches();
+    List<ItemResponseDto> getXiaomiWatches();
 
-    List<ItemDto> getAllAudio();
+    List<ItemResponseDto> getAllAudio();
 
-    List<ItemDto> getAppleAirpods();
+    List<ItemResponseDto> getAppleAirpods();
 
-    List<ItemDto> getSmartSpeakers();
+    List<ItemResponseDto> getSmartSpeakers();
 
-    List<ItemDto> getHeadphones();
+    List<ItemResponseDto> getHeadphones();
 
-    List<ItemDto> getSamsungHeadphones();
+    List<ItemResponseDto> getSamsungHeadphones();
 
-    List<ItemDto> getAppleCase();
+    List<ItemResponseDto> getAppleCase();
 
-    List<ItemDto> getAccessories();
+    List<ItemResponseDto> getAccessories();
 
-    List<ItemDto> getSamsungCase();
+    List<ItemResponseDto> getSamsungCase();
 
 }

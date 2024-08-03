@@ -5,7 +5,7 @@ import etu.spb.nic.online.store.category.controller.CategoryController;
 import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.category.model.Category;
 import etu.spb.nic.online.store.common.exception.ErrorHandler;
-import etu.spb.nic.online.store.item.dto.ItemDto;
+import etu.spb.nic.online.store.item.dto.ItemResponseDto;
 import etu.spb.nic.online.store.item.mapper.ItemMapper;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.item.model.ItemStatus;
@@ -79,9 +79,9 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        ItemDto result = ItemMapper.itemToItemDto(item);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(item);
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
         items.add(result);
 
@@ -120,9 +120,9 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        ItemDto result = ItemMapper.itemToItemDto(item);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(item);
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
         items.add(result);
 
@@ -187,10 +187,10 @@ public class CategoryControllerTest {
                 .categories(categoriesForSamsung)
                 .build();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemIphone);
-        ItemDto secondResult = ItemMapper.itemToItemDto(itemSamsung);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemIphone);
+        ItemResponseDto secondResult = ItemMapper.itemToItemResponseDto(itemSamsung);
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
         items.add(result);
         items.add(secondResult);
@@ -255,12 +255,12 @@ public class CategoryControllerTest {
                 .categories(categoriesForSamsung)
                 .build();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemIphone);
-        ItemDto secondResult = ItemMapper.itemToItemDto(itemSamsung);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemIphone);
+        ItemResponseDto secondResult = ItemMapper.itemToItemResponseDto(itemSamsung);
 
-        List<ItemDto> itemsIphone = new ArrayList<>();
-        List<ItemDto> itemsSamsung = new ArrayList<>();
-        List<ItemDto> itemsPhones = new ArrayList<>();
+        List<ItemResponseDto> itemsIphone = new ArrayList<>();
+        List<ItemResponseDto> itemsSamsung = new ArrayList<>();
+        List<ItemResponseDto> itemsPhones = new ArrayList<>();
 
         itemsIphone.add(result);
 
@@ -284,7 +284,7 @@ public class CategoryControllerTest {
                 .title(categoryPhones.getTitle())
                 .build();
 
-        Map<CategoryDto, List<ItemDto>> itemsMap = new HashMap<>();
+        Map<CategoryDto, List<ItemResponseDto>> itemsMap = new HashMap<>();
 
         itemsMap.put(categoryDtoIphone, itemsIphone);
         itemsMap.put(categoryDtoSamsung, itemsSamsung);
@@ -323,9 +323,9 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(item);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(item);
         items.add(result);
 
         when(itemService.getXiaomiWatches())
@@ -379,11 +379,11 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemXiaomi);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemXiaomi);
 
-        ItemDto secondResult = ItemMapper.itemToItemDto(itemAirpods);
+        ItemResponseDto secondResult = ItemMapper.itemToItemResponseDto(itemAirpods);
         items.add(result);
         items.add(secondResult);
 
@@ -421,9 +421,9 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(item);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(item);
         items.add(result);
 
         when(itemService.getAllAppleWatches())
@@ -498,13 +498,13 @@ public class CategoryControllerTest {
                 .categories(categoriesAlisa)
                 .build();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemAirpods);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemAirpods);
 
-        ItemDto secondResult = ItemMapper.itemToItemDto(itemSamsungHeadphones);
+        ItemResponseDto secondResult = ItemMapper.itemToItemResponseDto(itemSamsungHeadphones);
 
-        ItemDto thirdResult = ItemMapper.itemToItemDto(itemAlisa);
+        ItemResponseDto thirdResult = ItemMapper.itemToItemResponseDto(itemAlisa);
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
         items.add(result);
         items.add(secondResult);
@@ -544,9 +544,9 @@ public class CategoryControllerTest {
                 .build();
 
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemAirpods);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemAirpods);
 
         items.add(result);
 
@@ -584,9 +584,9 @@ public class CategoryControllerTest {
                 .categories(categoriesAlisa)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemAirpods);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemAirpods);
 
         items.add(result);
 
@@ -643,10 +643,10 @@ public class CategoryControllerTest {
                 .categories(categoriesSamsungHeadphones)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemAirpods);
-        ItemDto secondResult = ItemMapper.itemToItemDto(itemSamsungHeadphones);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemAirpods);
+        ItemResponseDto secondResult = ItemMapper.itemToItemResponseDto(itemSamsungHeadphones);
 
         items.add(result);
         items.add(secondResult);
@@ -686,9 +686,9 @@ public class CategoryControllerTest {
                 .build();
 
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemSamsungHeadphones);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemSamsungHeadphones);
 
         items.add(result);
 
@@ -726,9 +726,9 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(item);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(item);
 
         items.add(result);
 
@@ -785,10 +785,10 @@ public class CategoryControllerTest {
                 .categories(categoriesSamsungCase)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(itemAppleCase);
-        ItemDto secondResult = ItemMapper.itemToItemDto(itemSamsungCase);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(itemAppleCase);
+        ItemResponseDto secondResult = ItemMapper.itemToItemResponseDto(itemSamsungCase);
 
         items.add(result);
         items.add(secondResult);
@@ -828,9 +828,9 @@ public class CategoryControllerTest {
                 .categories(categories)
                 .build();
 
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemResponseDto> items = new ArrayList<>();
 
-        ItemDto result = ItemMapper.itemToItemDto(item);
+        ItemResponseDto result = ItemMapper.itemToItemResponseDto(item);
 
         items.add(result);
 
