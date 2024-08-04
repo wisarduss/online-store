@@ -32,24 +32,24 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 5")
     List<Item> findByCatIdAudio();
 
-    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 11")
+    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 8")
     List<Item> findByCatIdAppleAirpods();
 
-    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 12")
+    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 11")
     List<Item> findByCatIdSmartSpeakers();
 
     @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 7")
     List<Item> findByCatIdHeadphones();
 
-    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 13")
+    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 12")
     List<Item> findByCatIdSamsungHeadphones();
 
-    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 14")
+    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 13")
     List<Item> findByCatIdAppleCase();
 
     @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 6")
     List<Item> findByCatIdAccessories();
 
-    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 15")
+    @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 14")
     List<Item> findByCatIdSamsungCase();
 }

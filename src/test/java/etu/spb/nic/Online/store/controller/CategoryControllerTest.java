@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import etu.spb.nic.online.store.category.controller.CategoryController;
 import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.category.model.Category;
+import etu.spb.nic.online.store.category.service.CategoryService;
 import etu.spb.nic.online.store.common.exception.ErrorHandler;
 import etu.spb.nic.online.store.item.dto.ItemResponseDto;
 import etu.spb.nic.online.store.item.mapper.ItemMapper;
@@ -46,6 +47,9 @@ public class CategoryControllerTest {
 
     @MockBean
     private ItemService itemService;
+
+    @MockBean
+    private CategoryService categoryService;
 
 
     private String URL;
