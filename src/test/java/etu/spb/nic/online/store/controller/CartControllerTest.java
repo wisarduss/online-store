@@ -1,4 +1,4 @@
-package etu.spb.nic.online.store.controller;
+package etu.spb.nic.Online.store.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import etu.spb.nic.online.store.authentication.security.PersonDetails;
@@ -6,6 +6,7 @@ import etu.spb.nic.online.store.cart.controller.CartController;
 import etu.spb.nic.online.store.cart.dto.CartDto;
 import etu.spb.nic.online.store.cart.mapper.CartMapper;
 import etu.spb.nic.online.store.cart.model.Cart;
+import etu.spb.nic.online.store.cart.repository.CartRepository;
 import etu.spb.nic.online.store.cart.service.CartService;
 import etu.spb.nic.online.store.category.model.Category;
 import etu.spb.nic.online.store.common.exception.ErrorHandler;
