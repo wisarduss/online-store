@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-
     @Query("SELECT i FROM Item i JOIN i.categories c WHERE c.id = 2")
     List<Item> findByCatIdIphone();
 

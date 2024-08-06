@@ -13,7 +13,7 @@ public interface ItemService {
 
     List<ItemResponseDto> getSamsung();
 
-    void addItem(ItemDto itemDto);
+    ItemDto addItem(ItemDto itemDto);
 
     List<ItemResponseDto> getPhones();
 

@@ -16,7 +16,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping
-    public void addItem(@RequestBody ItemDto itemDto) {
-        itemService.addItem(itemDto);
+    public ItemDto addItem(@RequestBody ItemDto itemDto) {
+        return itemService.addItem(itemDto);
     }
 }

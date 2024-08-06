@@ -1,4 +1,4 @@
-package etu.spb.nic.Online.store.controller;
+package etu.spb.nic.online.store.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import etu.spb.nic.online.store.category.controller.CategoryController;
@@ -16,11 +16,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +33,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -51,12 +55,36 @@ public class CategoryControllerTest {
     @MockBean
     private CategoryService categoryService;
 
+    @Autowired
+    private WebApplicationContext context;
 
     private String URL;
 
     @BeforeEach
     void setUp() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         URL = "http://localhost:8080/catalog";
+    }
+
+    @Test
+    @WithMockUser
+    void addCategory() throws Exception {
+        CategoryDto categoryDto = CategoryDto.builder()
+                .id(1L)
+                .title("iphone")
+                .build();
+
+        when(categoryService.addCategory(any()))
+                .thenReturn(categoryDto);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonRequest = objectMapper.writeValueAsString(categoryDto);
+
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.post(URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonRequest));
+
+        response.andExpect(status().isOk());
     }
 
     @Test
@@ -89,7 +117,6 @@ public class CategoryControllerTest {
 
         items.add(result);
 
-
         when(itemService.getIphones())
                 .thenReturn(items);
 
@@ -111,7 +138,6 @@ public class CategoryControllerTest {
         Set<Category> categories = new HashSet<>();
 
         categories.add(category);
-
 
         Item item = Item.builder()
                 .id(1L)
@@ -167,7 +193,6 @@ public class CategoryControllerTest {
 
         categoriesForSamsung.add(categoryPhones);
         categoriesForSamsung.add(categorySamsung);
-
 
         Item itemIphone = Item.builder()
                 .id(1L)

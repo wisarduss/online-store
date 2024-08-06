@@ -1,18 +1,17 @@
 package etu.spb.nic.online.store.cart.service;
 
-import etu.spb.nic.online.store.cart.model.Cart;
 import etu.spb.nic.online.store.cart.dto.CartDto;
 import etu.spb.nic.online.store.cart.mapper.CartMapper;
+import etu.spb.nic.online.store.cart.model.Cart;
 import etu.spb.nic.online.store.cart.repository.CartRepository;
 import etu.spb.nic.online.store.common.exception.EmptyCartException;
 import etu.spb.nic.online.store.common.exception.EmptyItemException;
 import etu.spb.nic.online.store.common.exception.IdNotFoundException;
 import etu.spb.nic.online.store.common.exception.LassThenZeroException;
-import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.item.model.Item;
 import etu.spb.nic.online.store.item.model.ItemStatus;
+import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.user.model.User;
-import etu.spb.nic.online.store.user.repository.UserRepository;
 import etu.spb.nic.online.store.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -131,16 +130,16 @@ public class CartServiceImpl implements CartService {
     }
 
     private void checkStatus(Item item) {
-            if (item.getTotalCount() > 5) {
-                item.setItemStatus(ItemStatus.IN_STOCK.getText());
-            } else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
-                item.setItemStatus(ItemStatus.A_LITTLE.getText());
-            } else if (item.getTotalCount() == 0) {
-                item.setItemStatus(ItemStatus.OUT_OF_STOCK.getText());
-            } else {
-                throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
-            }
-            itemRepository.save(item);
+        if (item.getTotalCount() > 5) {
+            item.setItemStatus(ItemStatus.IN_STOCK.getText());
+        } else if (item.getTotalCount() > 0 && item.getTotalCount() <= 5) {
+            item.setItemStatus(ItemStatus.A_LITTLE.getText());
+        } else if (item.getTotalCount() == 0) {
+            item.setItemStatus(ItemStatus.OUT_OF_STOCK.getText());
+        } else {
+            throw new LassThenZeroException("Извините произошла ошибка с нашей стороны, попробуйте позже");
+        }
+        itemRepository.save(item);
     }
 
 }

@@ -4,5 +4,5 @@ import etu.spb.nic.online.store.category.dto.CategoryDto;
 
 public interface CategoryService {
 
-    void addCategory(CategoryDto categoryDto);
+    CategoryDto addCategory(CategoryDto categoryDto);
 }

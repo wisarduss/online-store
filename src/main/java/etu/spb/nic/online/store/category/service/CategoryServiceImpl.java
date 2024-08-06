@@ -13,7 +13,8 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
 
     @Override
-    public void addCategory(CategoryDto categoryDto) {
-        categoryRepository.save(CategoryMapper.categoryDtoToCategory(categoryDto));
+    public CategoryDto addCategory(CategoryDto categoryDto) {
+        return CategoryMapper.categoryToCategoryDto(categoryRepository
+                .save(CategoryMapper.categoryDtoToCategory(categoryDto)));
     }
 }

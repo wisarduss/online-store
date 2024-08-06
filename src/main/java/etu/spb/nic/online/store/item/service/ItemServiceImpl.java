@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
 
 
     @Override
-    public void addItem(ItemDto itemDto) {
+    public ItemDto addItem(ItemDto itemDto) {
         Set<Category> categories = new HashSet<>();
 
         for (Long catId : itemDto.getCatIds()) {
@@ -42,7 +42,7 @@ public class ItemServiceImpl implements ItemService {
         }
 
         Item item = ItemMapper.itemDtoToItemWithIds(itemDto, categories);
-        itemRepository.save(item);
+        return ItemMapper.itemToItemDto(itemRepository.save(item));
     }
 
     @Override
@@ -70,9 +70,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getPhones() {
-
         List<Item> items = itemRepository.findByCatIdPhones();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -104,7 +102,6 @@ public class ItemServiceImpl implements ItemService {
                     .title(categoryTitle)
                     .build();
 
-            // Добавляем в результат
             result.put(categoryDto, itemDtos);
         }
 
@@ -116,7 +113,6 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemResponseDto> getAllAppleWatches() {
         List<Item> items = itemRepository.findByCatIdAppleWatch();
 
-
         List<Item> updatedItems = checkStatus(items);
 
         return updatedItems.stream()
@@ -126,9 +122,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getWatches() {
-
         List<Item> items = itemRepository.findByCatIdWatch();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -139,9 +133,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getXiaomiWatches() {
-
         List<Item> items = itemRepository.findByCatIdXiaomiWatch();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -152,9 +144,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getAllAudio() {
-
         List<Item> items = itemRepository.findByCatIdAudio();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -165,9 +155,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getAppleAirpods() {
-
         List<Item> items = itemRepository.findByCatIdAppleAirpods();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -178,9 +166,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getSmartSpeakers() {
-
         List<Item> items = itemRepository.findByCatIdSmartSpeakers();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -191,9 +177,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getHeadphones() {
-
         List<Item> items = itemRepository.findByCatIdHeadphones();
-
 
         List<Item> updatedItems = checkStatus(items);
 
@@ -204,7 +188,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getSamsungHeadphones() {
-
         List<Item> items = itemRepository.findByCatIdSamsungHeadphones();
 
 
@@ -217,7 +200,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getAppleCase() {
-
         List<Item> items = itemRepository.findByCatIdAppleCase();
 
 
@@ -230,7 +212,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getAccessories() {
-
         List<Item> items = itemRepository.findByCatIdAccessories();
 
 
@@ -243,7 +224,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponseDto> getSamsungCase() {
-
         List<Item> items = itemRepository.findByCatIdSamsungCase();
 
 
@@ -270,10 +250,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     private String getCategoryTitleById(Long categoryId) {
-        // Находим категорию по ID
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
 
-        // Если категория найдена, возвращаем её заголовок, иначе возвращаем null или пустую строку
         return categoryOptional.map(Category::getTitle).orElse(null);
     }
 }

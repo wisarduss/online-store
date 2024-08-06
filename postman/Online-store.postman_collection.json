@@ -1,1455 +1,1455 @@
 {
-	"info": {
-		"_postman_id": "cc6f1129-55e6-461a-bb43-127fd7015691",
-		"name": "Online-store",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30751482"
-	},
-	"item": [
-		{
-			"name": "Authentification",
-			"item": [
-				{
-					"name": "registration",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": " {\r\n   \"name\": \"Maxim\",\r\n   \"surname\": \"Borodulin\",\r\n   \"email\": \"Borodulin@mail.ru\",\r\n   \"password\": \"12345\"\r\n }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/registration",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"registration"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": " {\r\n   \"email\": \"Borodulin@mail.ru\",\r\n   \"password\": \"12345\"\r\n }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Category",
-			"item": [
-				{
-					"name": "addPhones",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"phones\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addIphone",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"title\": \"iphone\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addSamsungPhone",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 3,\r\n    \"title\": \"samsung\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addWatch",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"watch\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAudio",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI3MjgwOTIsImlhdCI6MTcyMjcyNDQ5MiwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.hznmFA_oWYyBSdoqEAtpDbix0oj6r6Ic1xUybE_T8zM",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 5,\r\n    \"title\": \"audio\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAccessories",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 6,\r\n    \"title\": \"accessories\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addHeaphones",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 7,\r\n    \"title\": \"headphones\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAirpods",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 8,\r\n    \"title\": \"airpods\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAppleWatch",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 9,\r\n    \"title\": \"apple_watch\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addXiaomiWatch",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 10,\r\n    \"title\": \"xiaomi_watch\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addSmartSpeakers",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 11,\r\n    \"title\": \"smart_speakers\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addSamsungHeadphones",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 12,\r\n    \"title\": \"samsung_headphones\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAppleCase",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 13,\r\n    \"title\": \"apple_case\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addSamsungCase",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 14,\r\n    \"title\": \"samsung_case\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Item",
-			"item": [
-				{
-					"name": "addIphone",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"iphone 11\",\r\n    \"description\": \"старый телефон от Apple\",\r\n    \"photoURL\": \"photo_url\",\r\n    \"price\": 49999,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 340,\r\n    \"catIds\": [1,2]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addSamsung",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"samsung A32\",\r\n    \"description\": \"мощный телефон для самсунга\",\r\n    \"photoURL\": \"photo_samsung\",\r\n    \"price\": 23333,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 300,\r\n    \"catIds\": [1,3]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addOneMoreIphone",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"iphone 15\",\r\n    \"description\": \"мощный телефон от Apple\",\r\n    \"photoURL\": \"photo_url\",\r\n    \"price\": 69999,\r\n    \"status\": \"Мало\",\r\n    \"totalCount\": 3,\r\n    \"catIds\": [1,2]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAppleWatch",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"apple watch se 2023\",\r\n    \"description\": \"Одна из новеших моделей часов\",\r\n    \"photoURL\": \"photo_appleWatch\",\r\n    \"price\": 24999,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 234,\r\n    \"catIds\": [4, 9]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addXaiomiWatch",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Xiaomi Mi Band 7 Pro\",\r\n    \"description\": \"Умные часы\",\r\n    \"photoURL\": \"photo_xiaomi\",\r\n    \"price\": 3990,\r\n    \"status\": \"Нет в наличии\",\r\n    \"totalCount\": 0,\r\n    \"catIds\": [4,10]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAppleAirpods",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Airpods pro 2\",\r\n    \"description\": \"новейшие наушники от Apple\",\r\n    \"photoURL\": \"photo_Airpods\",\r\n    \"price\": 22390,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 250,\r\n    \"catIds\": [7,8]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addAlisa",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"alisa mini\",\r\n    \"description\": \"умная колонка от Яндекс\",\r\n    \"photoURL\": \"photo_alisa\",\r\n    \"price\": 6290,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 943,\r\n    \"catIds\": [5,11]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addSamsungHeadphones",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"akg headphones\",\r\n    \"description\": \"проводные наушники от samsung\",\r\n    \"photoURL\": \"photo_akg\",\r\n    \"price\": 2190,\r\n    \"status\": \"Мало\",\r\n    \"totalCount\": 4,\r\n    \"catIds\": [12,7]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addIphoneCase",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Apple case\",\r\n    \"description\": \"силиконовый чехол для iphone 15\",\r\n    \"photoURL\": \"photo_case\",\r\n    \"price\": 799,\r\n    \"status\": \"Мало\",\r\n    \"totalCount\": 3,\r\n    \"catIds\": [6,13]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addCaseSamsung",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"samsung case\",\r\n    \"description\": \"обычный чехол для samsung A32\",\r\n    \"photoURL\": \"photo_samsungCase\",\r\n    \"price\": 299,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 340,\r\n    \"catIds\": [6,14]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/items",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"items"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Catalog",
-			"item": [
-				{
-					"name": "getIphones",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/phones/iphone",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"phones",
-								"iphone"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSamsung",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/phones/samsung",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"phones",
-								"samsung"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getPhones",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/phones",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"phones"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAllIItemInCatalog",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAppleWatch",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/watch/apple-watch",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"watch",
-								"apple-watch"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getWatch",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/watch",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"watch"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getXiaomiWatch",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/watch/xiaomiwatch",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"watch",
-								"xiaomiwatch"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAudio",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/audio",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"audio"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAirpods",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/audio/headphones/airpods",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"audio",
-								"headphones",
-								"airpods"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSamrtSpeakers",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/audio/smart-speakers",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"audio",
-								"smart-speakers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getHeadphones",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/audio/headphones",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"audio",
-								"headphones"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSamsungHeadphones",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/audio/headphones/samsung",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"audio",
-								"headphones",
-								"samsung"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getIphoneAccessories",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/accessories/for-phones/iphone",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"accessories",
-								"for-phones",
-								"iphone"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAccessories",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/accessories",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"accessories"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSamsungAccessories",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/catalog/accessories/for-phones/samsung",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"catalog",
-								"accessories",
-								"for-phones",
-								"samsung"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Cart",
-			"item": [
-				{
-					"name": "deleteFromCart",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/cart/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"cart",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getCart",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/cart",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"cart"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "addItemToCart",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/cart/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"cart",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "clearCart",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI0NjcxNTcsImlhdCI6MTcyMjQ2MzU1NywiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Gq3Gu9rest3PEg1swVDzyf2GYEZO88eNKKbnGc_E1_s",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/cart/clear",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"cart",
-								"clear"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "cc6f1129-55e6-461a-bb43-127fd7015691",
+    "name": "Online-store",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30751482"
+  },
+  "item": [
+    {
+      "name": "Authentification",
+      "item": [
+        {
+          "name": "registration",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n   \"name\": \"Maxim\",\r\n   \"surname\": \"Borodulin\",\r\n   \"email\": \"Borodulin@mail.ru\",\r\n   \"password\": \"12345\"\r\n }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/registration",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "registration"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n   \"email\": \"Borodulin@mail.ru\",\r\n   \"password\": \"12345\"\r\n }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "addPhones",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"phones\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addIphone",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 2,\r\n    \"title\": \"iphone\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addSamsungPhone",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 3,\r\n    \"title\": \"samsung\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addWatch",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"watch\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAudio",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI3MjgwOTIsImlhdCI6MTcyMjcyNDQ5MiwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.hznmFA_oWYyBSdoqEAtpDbix0oj6r6Ic1xUybE_T8zM",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 5,\r\n    \"title\": \"audio\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAccessories",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 6,\r\n    \"title\": \"accessories\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addHeaphones",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 7,\r\n    \"title\": \"headphones\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAirpods",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 8,\r\n    \"title\": \"airpods\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAppleWatch",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 9,\r\n    \"title\": \"apple_watch\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addXiaomiWatch",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 10,\r\n    \"title\": \"xiaomi_watch\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addSmartSpeakers",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 11,\r\n    \"title\": \"smart_speakers\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addSamsungHeadphones",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 12,\r\n    \"title\": \"samsung_headphones\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAppleCase",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 13,\r\n    \"title\": \"apple_case\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addSamsungCase",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 14,\r\n    \"title\": \"samsung_case\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "item": [
+        {
+          "name": "addIphone",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"iphone 11\",\r\n    \"description\": \"старый телефон от Apple\",\r\n    \"photoURL\": \"photo_url\",\r\n    \"price\": 49999,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 340,\r\n    \"catIds\": [1,2]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addSamsung",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"samsung A32\",\r\n    \"description\": \"мощный телефон для самсунга\",\r\n    \"photoURL\": \"photo_samsung\",\r\n    \"price\": 23333,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 300,\r\n    \"catIds\": [1,3]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addOneMoreIphone",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"iphone 15\",\r\n    \"description\": \"мощный телефон от Apple\",\r\n    \"photoURL\": \"photo_url\",\r\n    \"price\": 69999,\r\n    \"status\": \"Мало\",\r\n    \"totalCount\": 3,\r\n    \"catIds\": [1,2]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAppleWatch",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"apple watch se 2023\",\r\n    \"description\": \"Одна из новеших моделей часов\",\r\n    \"photoURL\": \"photo_appleWatch\",\r\n    \"price\": 24999,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 234,\r\n    \"catIds\": [4, 9]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addXaiomiWatch",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Xiaomi Mi Band 7 Pro\",\r\n    \"description\": \"Умные часы\",\r\n    \"photoURL\": \"photo_xiaomi\",\r\n    \"price\": 3990,\r\n    \"status\": \"Нет в наличии\",\r\n    \"totalCount\": 0,\r\n    \"catIds\": [4,10]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAppleAirpods",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Airpods pro 2\",\r\n    \"description\": \"новейшие наушники от Apple\",\r\n    \"photoURL\": \"photo_Airpods\",\r\n    \"price\": 22390,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 250,\r\n    \"catIds\": [7,8]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAlisa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"alisa mini\",\r\n    \"description\": \"умная колонка от Яндекс\",\r\n    \"photoURL\": \"photo_alisa\",\r\n    \"price\": 6290,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 943,\r\n    \"catIds\": [5,11]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addSamsungHeadphones",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"akg headphones\",\r\n    \"description\": \"проводные наушники от samsung\",\r\n    \"photoURL\": \"photo_akg\",\r\n    \"price\": 2190,\r\n    \"status\": \"Мало\",\r\n    \"totalCount\": 4,\r\n    \"catIds\": [12,7]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addIphoneCase",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Apple case\",\r\n    \"description\": \"силиконовый чехол для iphone 15\",\r\n    \"photoURL\": \"photo_case\",\r\n    \"price\": 799,\r\n    \"status\": \"Мало\",\r\n    \"totalCount\": 3,\r\n    \"catIds\": [6,13]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addCaseSamsung",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDYzNTUsImlhdCI6MTcyMjgwMjc1NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.zHlu9hDD7jeZyIAEZQT4d92_JoqjWwhinbO5HVbVFkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"samsung case\",\r\n    \"description\": \"обычный чехол для samsung A32\",\r\n    \"photoURL\": \"photo_samsungCase\",\r\n    \"price\": 299,\r\n    \"status\": \"В наличии\",\r\n    \"totalCount\": 340,\r\n    \"catIds\": [6,14]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Catalog",
+      "item": [
+        {
+          "name": "getIphones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/phones/iphone",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "phones",
+                "iphone"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSamsung",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/phones/samsung",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "phones",
+                "samsung"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getPhones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/phones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "phones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllIItemInCatalog",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAppleWatch",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/watch/apple-watch",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "watch",
+                "apple-watch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getWatch",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/watch",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "watch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getXiaomiWatch",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/watch/xiaomiwatch",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "watch",
+                "xiaomiwatch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAudio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/audio",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "audio"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAirpods",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/audio/headphones/airpods",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "audio",
+                "headphones",
+                "airpods"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSamrtSpeakers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/audio/smart-speakers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "audio",
+                "smart-speakers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getHeadphones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/audio/headphones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "audio",
+                "headphones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSamsungHeadphones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/audio/headphones/samsung",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "audio",
+                "headphones",
+                "samsung"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getIphoneAccessories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/accessories/for-phones/iphone",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "accessories",
+                "for-phones",
+                "iphone"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAccessories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/accessories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "accessories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSamsungAccessories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/catalog/accessories/for-phones/samsung",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "catalog",
+                "accessories",
+                "for-phones",
+                "samsung"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "deleteFromCart",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/cart/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cart",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCart",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/cart",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cart"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addItemToCart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI4MDc2OTUsImlhdCI6MTcyMjgwNDA5NSwiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Y9tE_zpwlg8458YzhQSA4HIBzJ_6oboJWpsXb6YhsGw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/cart/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cart",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "clearCart",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIGRldGFpbHMiLCJpc3MiOiJCb3JvZHVsaW4iLCJleHAiOjE3MjI0NjcxNTcsImlhdCI6MTcyMjQ2MzU1NywiZW1haWwiOiJCb3JvZHVsaW5AbWFpbC5ydSJ9.Gq3Gu9rest3PEg1swVDzyf2GYEZO88eNKKbnGc_E1_s",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/cart/clear",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "cart",
+                "clear"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }

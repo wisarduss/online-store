@@ -23,8 +23,8 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping
-    public void addCategory(@RequestBody CategoryDto categoryDto) {
-        categoryService.addCategory(categoryDto);
+    public CategoryDto addCategory(@RequestBody CategoryDto categoryDto) {
+        return categoryService.addCategory(categoryDto);
     }
 
     @GetMapping("/phones/iphone")

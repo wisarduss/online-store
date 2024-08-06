@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 public class ItemResponseDto {
+
     private Long id;
     private String title;
     private String description;
