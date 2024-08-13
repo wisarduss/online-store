@@ -9,36 +9,10 @@ import java.util.Map;
 
 public interface ItemService {
 
-    List<ItemResponseDto> getIphones();
-
-    List<ItemResponseDto> getSamsung();
+    Map<CategoryDto, List<ItemResponseDto>> getAll();
 
     ItemDto addItem(ItemDto itemDto);
 
-    List<ItemResponseDto> getPhones();
-
-    Map<CategoryDto, List<ItemResponseDto>> getAll();
-
-    List<ItemResponseDto> getAllAppleWatches();
-
-    List<ItemResponseDto> getWatches();
-
-    List<ItemResponseDto> getXiaomiWatches();
-
-    List<ItemResponseDto> getAllAudio();
-
-    List<ItemResponseDto> getAppleAirpods();
-
-    List<ItemResponseDto> getSmartSpeakers();
-
-    List<ItemResponseDto> getHeadphones();
-
-    List<ItemResponseDto> getSamsungHeadphones();
-
-    List<ItemResponseDto> getAppleCase();
-
-    List<ItemResponseDto> getAccessories();
-
-    List<ItemResponseDto> getSamsungCase();
+    List<ItemResponseDto> getItemForCatId(Long catId);
 
 }

@@ -11,6 +11,7 @@ import etu.spb.nic.online.store.category.service.CategoryService;
 import etu.spb.nic.online.store.common.util.JWTUtil;
 import etu.spb.nic.online.store.item.dto.ItemResponseDto;
 import etu.spb.nic.online.store.item.model.Item;
+import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.item.service.ItemService;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.test.context.support.WithMockUser;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -79,7 +81,7 @@ public class CategoryServiceTest {
     }
 
     @Test
-    void getIphone() {
+    void getItemsForCatId() {
         CategoryDto categoryDto = CategoryDto.builder()
                 .id(1L)
                 .title("iphone")
@@ -95,8 +97,8 @@ public class CategoryServiceTest {
                 .title("Iphone 15")
                 .description("Новейший телефон от Apple")
                 .photoURL("photo_url_iphone")
-                .price(69999L)
-                .status("В наличии")
+                .price(BigDecimal.valueOf(69999L))
+                .status(ItemStatus.IN_STOCK)
                 .build();
 
         Item item = Item.builder()
@@ -104,9 +106,9 @@ public class CategoryServiceTest {
                 .title("Iphone 15")
                 .description("Новейший телефон от Apple")
                 .photoURL("photo_url_iphone")
-                .price(69999L)
+                .price(BigDecimal.valueOf(69999L))
                 .totalCount(200L)
-                .itemStatus("В наличии")
+                .itemStatus(ItemStatus.IN_STOCK)
                 .categories(categories)
                 .build();
 
@@ -115,93 +117,10 @@ public class CategoryServiceTest {
         when(itemRepository.save(any()))
                 .thenReturn(item);
 
-        List<ItemResponseDto> result = itemService.getIphones();
+        List<ItemResponseDto> result = itemService.getItemForCatId(categoryDto.getId());
 
         assertThat(result).isNotNull();
     }
 
-    @Test
-    void getPhones() {
-        CategoryDto categoryDto = CategoryDto.builder()
-                .id(1L)
-                .title("phones")
-                .build();
-
-        Category category = CategoryMapper.categoryDtoToCategory(categoryDto);
-
-        Set<Category> categories = new HashSet<>();
-        categories.add(category);
-
-        ItemResponseDto itemResponseDto = ItemResponseDto.builder()
-                .id(1L)
-                .title("Iphone 15")
-                .description("Новейший телефон от Apple")
-                .photoURL("photo_url_iphone")
-                .price(69999L)
-                .status("В наличии")
-                .build();
-
-        Item item = Item.builder()
-                .id(1L)
-                .title("Iphone 15")
-                .description("Новейший телефон от Apple")
-                .photoURL("photo_url_iphone")
-                .price(69999L)
-                .totalCount(200L)
-                .itemStatus("В наличии")
-                .categories(categories)
-                .build();
-
-        when(categoryRepository.findById(anyLong()))
-                .thenReturn(Optional.of(category));
-        when(itemRepository.save(any()))
-                .thenReturn(item);
-
-        List<ItemResponseDto> result = itemService.getPhones();
-
-        assertThat(result).isNotNull();
-    }
-
-    @Test
-    void getSamsung() {
-        CategoryDto categoryDto = CategoryDto.builder()
-                .id(1L)
-                .title("samsung")
-                .build();
-
-        Category category = CategoryMapper.categoryDtoToCategory(categoryDto);
-
-        Set<Category> categories = new HashSet<>();
-        categories.add(category);
-
-        ItemResponseDto itemResponseDto = ItemResponseDto.builder()
-                .id(1L)
-                .title("Samsung A32")
-                .description("бюджетный телефон от samsung")
-                .photoURL("photo_url_samsung")
-                .price(25490L)
-                .status("В наличии")
-                .build();
-
-        Item item = Item.builder()
-                .id(1L)
-                .title("Samsung A32")
-                .description("бюджетный телефон от samsung")
-                .photoURL("photo_url_samsung")
-                .price(25490L)
-                .totalCount(200L)
-                .itemStatus("В наличии")
-                .categories(categories)
-                .build();
-
-        when(categoryRepository.findById(anyLong()))
-                .thenReturn(Optional.of(category));
-        when(itemRepository.save(any()))
-                .thenReturn(item);
-
-        List<ItemResponseDto> result = itemService.getIphones();
-
-        assertThat(result).isNotNull();
-    }
 
 }

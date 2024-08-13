@@ -5,6 +5,7 @@ import etu.spb.nic.online.store.category.dto.CategoryDto;
 import etu.spb.nic.online.store.common.exception.ErrorHandler;
 import etu.spb.nic.online.store.item.controller.ItemController;
 import etu.spb.nic.online.store.item.dto.ItemDto;
+import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.item.service.ItemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -67,9 +69,9 @@ public class ItemControllerTest {
                 .title("Iphone 15")
                 .description("Новейший телефон от Apple")
                 .photoURL("photo_url_iphone")
-                .price(69999L)
+                .price(BigDecimal.valueOf(69999))
                 .totalCount(200L)
-                .status("В наличии")
+                .status(ItemStatus.IN_STOCK)
                 .catIds(catIds)
                 .build();
 

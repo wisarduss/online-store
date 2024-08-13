@@ -10,6 +10,7 @@ import etu.spb.nic.online.store.category.repository.CategoryRepository;
 import etu.spb.nic.online.store.common.util.JWTUtil;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 import etu.spb.nic.online.store.item.model.Item;
+import etu.spb.nic.online.store.item.model.ItemStatus;
 import etu.spb.nic.online.store.item.repository.ItemRepository;
 import etu.spb.nic.online.store.item.service.ItemService;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Profile;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -70,9 +72,9 @@ public class ItemServiceTest {
                 .title("Iphone 15")
                 .description("Новейший телефон от Apple")
                 .photoURL("photo_url_iphone")
-                .price(69999L)
+                .price(BigDecimal.valueOf(69999))
                 .totalCount(200L)
-                .status("В наличии")
+                .status(ItemStatus.IN_STOCK)
                 .catIds(catIds)
                 .build();
 
@@ -81,9 +83,9 @@ public class ItemServiceTest {
                 .title("Iphone 15")
                 .description("Новейший телефон от Apple")
                 .photoURL("photo_url_iphone")
-                .price(69999L)
+                .price(BigDecimal.valueOf(69999))
                 .totalCount(200L)
-                .itemStatus("В наличии")
+                .itemStatus(ItemStatus.IN_STOCK)
                 .categories(categories)
                 .build();
 

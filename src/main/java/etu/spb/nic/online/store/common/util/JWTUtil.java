@@ -14,18 +14,19 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
+    private static final Date JWT_TOKEN_LIFE = Date.from(ZonedDateTime.now().plusHours(1).toInstant());
+
     @Value("${jwt_secret}")
     private String secret;
 
     public String generateToken(String email) {
-        Date expirationDate = Date.from(ZonedDateTime.now().plusHours(1).toInstant());
 
         return JWT.create()
                 .withSubject("User details")
                 .withClaim("email", email)
                 .withIssuedAt(new Date())
                 .withIssuer("Borodulin")
-                .withExpiresAt(expirationDate)
+                .withExpiresAt(JWT_TOKEN_LIFE)
                 .sign(Algorithm.HMAC256(secret));
     }
 

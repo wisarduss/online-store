@@ -2,6 +2,7 @@ package etu.spb.nic.online.store.authentication.controller;
 
 import etu.spb.nic.online.store.authentication.dto.AuthenticationDto;
 import etu.spb.nic.online.store.authentication.service.AuthenticationService;
+import etu.spb.nic.online.store.common.exception.BadRegistrationException;
 import etu.spb.nic.online.store.common.util.JWTUtil;
 import etu.spb.nic.online.store.common.util.UserValidator;
 import etu.spb.nic.online.store.user.dto.UserDto;
@@ -19,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.Collections;
-import java.util.Map;
 
 
 @RestController
@@ -35,38 +34,38 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/registration")
-    public Map<String, String> performRegistration(@RequestBody @Valid UserDto userCreateDto,
-                                                   BindingResult bindingResult) {
+    public String performRegistration(@RequestBody @Valid UserDto userCreateDto,
+                                      BindingResult bindingResult) {
 
         userValidator.validate(userCreateDto, bindingResult);
 
         User user = UserMapper.userDtoToUser(userCreateDto);
 
         if (bindingResult.hasErrors()) {
-            return Collections.singletonMap("message", "Ошибка!");
+            throw new BadRegistrationException("Пользователь не прошел проверку регистрации!");
         }
 
         authenticationService.register(user);
 
         String token = jwtUtil.generateToken(user.getEmail());
-        log.debug("Получен POST запрос на регистрацию пользователя {}", userCreateDto);
-        return Collections.singletonMap("jwt-token", token);
+        log.debug("Пользователь зарегистрирован {} JWTToken выдан", userCreateDto);
+        return String.format("jwt token: %s", token);
     }
 
     @PostMapping("/login")
-    public Map<String, String> performLogin(@RequestBody AuthenticationDto authenticationDto) {
+    public String performLogin(@RequestBody @Valid AuthenticationDto authenticationDto) {
         UsernamePasswordAuthenticationToken authInputToken =
                 new UsernamePasswordAuthenticationToken(authenticationDto.getEmail(), authenticationDto.getPassword());
 
         try {
             authenticationManager.authenticate(authInputToken);
         } catch (BadCredentialsException e) {
-            return Collections.singletonMap("message", "Incorrect credentials");
+            throw new BadRegistrationException("Incorrect credentials");
         }
 
         String token = jwtUtil.generateToken(authenticationDto.getEmail());
-        log.debug("Получен POST запрос на аутентификацию пользователя");
-        return Collections.singletonMap("jwt-token", token);
+        log.debug("Пользователь прошел аутентификацию, JWTToken получен");
+        return String.format("jwt token: %s", token);
     }
 
 

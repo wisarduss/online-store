@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum ItemStatus {
-    OUT_OF_STOCK("Нет в наличии"),
-    IN_STOCK("В наличии"),
-    A_LITTLE("Мало");
+    OUT_OF_STOCK,
+    IN_STOCK,
+    A_LITTLE;
 
     private String text;
 

@@ -6,9 +6,10 @@ public interface CartService {
 
     CartDto getCartForUser();
 
-    void addItemToCart(Long itemId);
+    void addItemToCart(Long itemId, Integer quantity);
 
     void removeItemFromCart(Long itemId);
 
-    void clearCart();
+    void changeQuantity(Long itemId, Integer quantity, String operator);
+
 }

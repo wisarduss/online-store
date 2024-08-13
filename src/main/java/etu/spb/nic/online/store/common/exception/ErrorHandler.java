@@ -64,4 +64,11 @@ public class ErrorHandler {
         log.debug("Получен статус 500 internal server error  {}", e.getMessage());
         return new ErrorResponse(e.getMessage());
     }
+
+    @ExceptionHandler(BadRegistrationException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handleObjectDoesNotExistException(final BadRegistrationException e) {
+        log.debug("Получен статус 403 forbidden  {}", e.getMessage());
+        return new ErrorResponse(e.getMessage());
+    }
 }
