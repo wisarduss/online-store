@@ -49,7 +49,7 @@ public class AuthController {
 
         String token = jwtUtil.generateToken(user.getEmail());
         log.debug("Пользователь зарегистрирован {} JWTToken выдан", userCreateDto);
-        return String.format("jwt token: %s", token);
+        return token;
     }
 
     @PostMapping("/login")
@@ -65,7 +65,7 @@ public class AuthController {
 
         String token = jwtUtil.generateToken(authenticationDto.getEmail());
         log.debug("Пользователь прошел аутентификацию, JWTToken получен");
-        return String.format("jwt token: %s", token);
+        return token;
     }
 
 

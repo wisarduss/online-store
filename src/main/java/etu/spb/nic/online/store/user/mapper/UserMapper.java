@@ -18,14 +18,4 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserDto userToUserDto(User user) {
-
-        return UserDto.builder()
-                .id(user.getId())
-                .name(user.getName())
-                .surname(user.getSurname())
-                .email(user.getEmail())
-                .password(user.getPassword())
-                .build();
-    }
 }

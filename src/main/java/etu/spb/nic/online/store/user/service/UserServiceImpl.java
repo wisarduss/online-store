@@ -1,10 +1,7 @@
 package etu.spb.nic.online.store.user.service;
 
 import etu.spb.nic.online.store.authentication.security.PersonDetails;
-import etu.spb.nic.online.store.common.exception.AlreadyExistException;
 import etu.spb.nic.online.store.common.exception.NotOwnerException;
-import etu.spb.nic.online.store.user.dto.UserDto;
-import etu.spb.nic.online.store.user.mapper.UserMapper;
 import etu.spb.nic.online.store.user.model.User;
 import etu.spb.nic.online.store.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,19 +39,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
 
         return user.get();
-    }
-
-    @Override
-    public UserDetails create(UserDto userDto, String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-
-        if (user.isPresent()) {
-            throw new AlreadyExistException("Пользователь с таким Email уже существует");
-        }
-
-        User saveUser = UserMapper.userDtoToUser(userDto);
-
-        return new PersonDetails(saveUser);
     }
 
 }

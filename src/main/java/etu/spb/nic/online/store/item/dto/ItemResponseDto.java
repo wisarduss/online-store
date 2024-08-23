@@ -1,6 +1,5 @@
 package etu.spb.nic.online.store.item.dto;
 
-import etu.spb.nic.online.store.item.model.ItemStatus;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,5 +14,5 @@ public class ItemResponseDto {
     private String description;
     private String photoURL;
     private BigDecimal price;
-    private ItemStatus status;
+    private String status;
 }

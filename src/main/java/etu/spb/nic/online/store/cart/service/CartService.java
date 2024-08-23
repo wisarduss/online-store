@@ -1,6 +1,7 @@
 package etu.spb.nic.online.store.cart.service;
 
 import etu.spb.nic.online.store.cart.dto.CartDto;
+import etu.spb.nic.online.store.cart.model.CartOperatorStatus;
 
 public interface CartService {
 
@@ -10,6 +11,6 @@ public interface CartService {
 
     void removeItemFromCart(Long itemId);
 
-    void changeQuantity(Long itemId, Integer quantity, String operator);
+    void changeQuantity(Long itemId, Integer quantity, CartOperatorStatus operator);
 
 }

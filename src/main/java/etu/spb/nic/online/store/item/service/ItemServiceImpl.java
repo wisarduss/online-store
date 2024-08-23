@@ -30,7 +30,6 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
 
-
     @Override
     public ItemDto addItem(ItemDto itemDto) {
         Set<Category> categories = new HashSet<>();
@@ -52,7 +51,8 @@ public class ItemServiceImpl implements ItemService {
 
         Map<Long, List<ItemResponseDto>> itemsByCategoryId = updatedItems.stream()
                 .flatMap(item -> item.getCategories().stream()
-                        .map(category -> new AbstractMap.SimpleEntry<>(category.getId(), ItemMapper.itemToItemResponseDto(item))))
+                        .map(category -> new AbstractMap.SimpleEntry<>(category.getId(),
+                                ItemMapper.itemToItemResponseDto(item))))
                 .collect(Collectors.groupingBy(Map.Entry::getKey,
                         Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
 

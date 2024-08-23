@@ -1,6 +1,5 @@
 package etu.spb.nic.online.store.item.dto;
 
-import etu.spb.nic.online.store.item.model.ItemStatus;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +8,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Set;
-
 
 @Data
 @Builder(toBuilder = true)
@@ -24,7 +22,7 @@ public class ItemDto {
     private String photoURL;
     @NotNull
     private BigDecimal price;
-    private ItemStatus status;
+    private String status;
     @NotNull
     private Long totalCount;
     @NotEmpty

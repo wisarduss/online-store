@@ -1,4 +1,3 @@
-/*
 package etu.spb.nic.online.store.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +19,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -175,9 +173,10 @@ public class CartControllerTest {
                 .user(authenticatedUser)
                 .build();
 
-        cartService.addItemToCart(item.getId());
+        cartService.addItemToCart(item.getId(), 50);
 
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.post(URL.concat("/{itemId}"), item.getId()));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders
+                .post(URL.concat("/{itemId}/{quantity}"), item.getId(),50));
 
         response.andExpect(status().isOk());
     }
@@ -224,46 +223,4 @@ public class CartControllerTest {
         response.andExpect(status().isOk());
     }
 
-    @Test
-    @WithMockUser
-    void clearCart() throws Exception {
-
-        when(userRepository.findByEmail(authenticatedUser.getEmail()))
-                .thenReturn(Optional.of(authenticatedUser));
-
-        Category category = Category.builder()
-                .id(1L)
-                .title("iphone")
-                .build();
-
-        Set<Category> categories = new HashSet<>();
-
-        categories.add(category);
-
-        Item item = Item.builder()
-                .id(1L)
-                .title("iphone 15 pro")
-                .description("мощный телефон")
-                .photoURL("photo_url")
-                .price(BigDecimal.valueOf(89999L))
-                .totalCount(345L)
-                .itemStatus(ItemStatus.IN_STOCK)
-                .categories(categories)
-                .build();
-
-        when(itemRepository.findById(anyLong()))
-                .thenReturn(Optional.of(item));
-
-        Cart cart = Cart.builder()
-                .id(1L)
-                .user(authenticatedUser)
-                .build();
-
-        cartService.clearCart();
-
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.delete(URL.concat("/clear")));
-
-        response.andExpect(status().isOk());
-    }
 }
-*/

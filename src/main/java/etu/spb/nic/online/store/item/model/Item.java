@@ -1,8 +1,6 @@
 package etu.spb.nic.online.store.item.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import etu.spb.nic.online.store.category.model.Category;
-import etu.spb.nic.online.store.common.util.ItemStatusDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -50,7 +48,6 @@ public class Item {
     private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
-    @JsonDeserialize(using = ItemStatusDeserializer.class)
     private ItemStatus itemStatus;
 
     @Column(name = "total_count")

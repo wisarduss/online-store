@@ -74,7 +74,7 @@ public class ItemServiceTest {
                 .photoURL("photo_url_iphone")
                 .price(BigDecimal.valueOf(69999))
                 .totalCount(200L)
-                .status(ItemStatus.IN_STOCK)
+                .status(String.valueOf(ItemStatus.IN_STOCK))
                 .catIds(catIds)
                 .build();
 

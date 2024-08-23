@@ -23,10 +23,9 @@ public class CartMapper {
 
     public static CartDto cartToCartDto(Cart cart) {
         if (cart == null) {
-            throw new IllegalArgumentException("Корзина не может быть null");
+            throw new IllegalArgumentException("Корзина не может быть пуста");
         }
 
-        // Проверка на null для items
         Map<Long, Integer> itemIds = Optional.ofNullable(cart.getItems())
                 .orElse(Collections.emptyMap())
                 .entrySet().stream()
@@ -34,7 +33,7 @@ public class CartMapper {
                 .collect(Collectors.toMap(entry -> {
                     Long id = entry.getKey().getId();
                     if (id == null) {
-                        throw new IllegalStateException("ID товара не может быть null");
+                        throw new IllegalStateException("Id товара не может быть null");
                     }
                     return id;
                 }, Map.Entry::getValue));

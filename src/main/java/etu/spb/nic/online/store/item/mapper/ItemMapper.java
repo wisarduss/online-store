@@ -4,6 +4,7 @@ import etu.spb.nic.online.store.category.model.Category;
 import etu.spb.nic.online.store.item.dto.ItemDto;
 import etu.spb.nic.online.store.item.dto.ItemResponseDto;
 import etu.spb.nic.online.store.item.model.Item;
+import etu.spb.nic.online.store.item.model.ItemStatus;
 import lombok.experimental.UtilityClass;
 
 import java.util.Set;
@@ -18,7 +19,7 @@ public class ItemMapper {
                 .description(item.getDescription())
                 .photoURL(item.getPhotoURL())
                 .price(item.getPrice())
-                .status(item.getItemStatus())
+                .status(item.getItemStatus().getText())
                 .build();
     }
 
@@ -29,7 +30,7 @@ public class ItemMapper {
                 .description(itemDto.getDescription())
                 .photoURL(itemDto.getPhotoURL())
                 .price(itemDto.getPrice())
-                .itemStatus(itemDto.getStatus())
+                .itemStatus(ItemStatus.valueOf(itemDto.getStatus()))
                 .totalCount(itemDto.getTotalCount())
                 .categories(categories)
                 .build();
@@ -42,7 +43,7 @@ public class ItemMapper {
                 .description(item.getDescription())
                 .photoURL(item.getPhotoURL())
                 .price(item.getPrice())
-                .status(item.getItemStatus())
+                .status(item.getItemStatus().getText())
                 .build();
     }
 

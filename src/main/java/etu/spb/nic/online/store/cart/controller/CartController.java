@@ -1,6 +1,7 @@
 package etu.spb.nic.online.store.cart.controller;
 
 import etu.spb.nic.online.store.cart.dto.CartDto;
+import etu.spb.nic.online.store.cart.model.CartOperatorStatus;
 import etu.spb.nic.online.store.cart.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,7 +38,7 @@ public class CartController {
     @PatchMapping("/{itemId}/{quantity}")
     public void changeQuantity(@PathVariable Long itemId,
                                @PathVariable Integer quantity,
-                               @RequestParam(name = "operator") String operator) {
+                               @RequestParam(name = "operator") CartOperatorStatus operator) {
         cartService.changeQuantity(itemId, quantity, operator);
     }
 }

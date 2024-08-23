@@ -1,4 +1,3 @@
-/*
 package etu.spb.nic.online.store.service;
 
 import etu.spb.nic.online.store.authentication.config.JWTFilter;
@@ -30,7 +29,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -127,8 +128,8 @@ public class CartServiceTest {
                 .categories(categories)
                 .build();
 
-        Set<Item> items = new HashSet<>();
-        items.add(item);
+        Map<Item, Integer> items = new HashMap<>();
+        items.put(item, 20);
 
         Cart cart = Cart.builder()
                 .id(1L)
@@ -136,7 +137,7 @@ public class CartServiceTest {
                 .items(items)
                 .build();
 
-        when(cartRepository.findByUser(any()))
+        when(cartRepository.save(any()))
                 .thenReturn(cart);
 
         CartDto cartDto = cartService.getCartForUser();
@@ -188,8 +189,8 @@ public class CartServiceTest {
                 .categories(categories)
                 .build();
 
-        Set<Item> items = new HashSet<>();
-        items.add(item);
+        Map<Item, Integer> items = new HashMap<>();
+        items.put(item, 20);
 
         Cart cart = Cart.builder()
                 .id(1L)
@@ -197,20 +198,16 @@ public class CartServiceTest {
                 .items(items)
                 .build();
 
-        when(itemRepository.getById(anyLong()))
-                .thenReturn(item);
         when(itemRepository.findById(anyLong()))
                 .thenReturn(Optional.of(secondItem));
         when(cartRepository.save(any()))
                 .thenReturn(cart);
 
-        cartService.addItemToCart(secondItem.getId());
+        cartService.addItemToCart(secondItem.getId(), 20);
 
-        verify(itemRepository, times(2)).getById(anyLong());
         verify(itemRepository, times(1)).findById(anyLong());
-        verify(cartRepository, times(2)).save(any());
+        verify(cartRepository, times(1)).save(any());
 
     }
 
 }
-*/

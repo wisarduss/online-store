@@ -98,7 +98,7 @@ public class CategoryServiceTest {
                 .description("Новейший телефон от Apple")
                 .photoURL("photo_url_iphone")
                 .price(BigDecimal.valueOf(69999L))
-                .status(ItemStatus.IN_STOCK)
+                .status(ItemStatus.IN_STOCK.getText())
                 .build();
 
         Item item = Item.builder()
